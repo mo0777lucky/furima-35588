@@ -3,20 +3,20 @@
 
 ## Users Tabel
 
-| Column                | Type   | Options     |
-| --------------------- | ------ | ----------- |
-| nickname              | string | null: false |
-| email                 | string | null: false |
-| password              | string | null: false |
-| password_confirmation | string | null: false |
-| name_full_kanji       | string | null: false |
-| name_full_kana        | string | null: false |
-| birthday              | string | null: false |
+| Column                | Type   | Options      |
+| --------------------- | ------ | ------------ |
+| nickname              | string | null: false  |
+| email                 | string | unique: true |
+| encrypted_password    | string | null: false  |
+| last_name_kanji       | string | null: false  |
+| first_name_kanji      | string | null: false  |
+| last_name_kana        | string | null: false  |
+| first_name_kana       | string | null: false  |
+| date                  | string | null: false  |
 
 ### Association
 - has_many :Items
-- has_many :Purchase record
-- belongs_to :Shipping information
+- has_many :Purchase records
 
 
 
@@ -27,17 +27,16 @@
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | title         | string     | null: false                    |
-| image         |            |                                |
-| category      | string     | null: false                    |
-| price         | string     | null: false                    |
-| status        | text       | null: false                    |
-| shipping_fee  | string     | null: false                    |
-| shipping_area | string     | null: false                    |
-| shipping_date | string     | null: false                    |
-| seller        | references | null: false, foreign_key: true |
+| category      | integer    | null: false                    |
+| price         | integer    | null: false                    |
+| status        | integer    | null: false                    |
+| shipping_fee  | integer    | null: false                    |
+| shipping_area | integer    | null: false                    |
+| shipping_date | integer    | null: false                    |
+| seller_id     | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :Users
+- belongs_to :User
 - has_one :Purchase record
 - belongs_to :Shipping information
 
@@ -47,14 +46,14 @@
 
 ## Purchase record Tabel
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| buyer   | references | null: false, foreign_key: true |
-| item    | references | null: false, foreign_key: true |
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| buyer_id | references | null: false, foreign_key: true |
+| item_id  | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :Users
-- belongs_to :Items
+- belongs_to :User
+- belongs_to :Item
 - has_one:Shipping information
 
 
@@ -69,10 +68,9 @@
 | prefectures   | string | null: false |
 | municipality  | string | null: false |
 | address       | string | null: false |
-| building_name | string | null: false |
+| building_name | string |             |
 | phone_number  | string | null: false |
 
 ### Association
-- belongs_to :Users
 - has_many :Items
 - belongs_to:Purchase record
