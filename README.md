@@ -44,7 +44,7 @@
 
 
 
-## Purchase_record Tabel
+## Purchase_records Tabel
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
@@ -54,13 +54,13 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one:shipping_information
+- has_one:shippings
 
 
 
 
 
-## Shipping_information Tabel
+## Shippings Tabel
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
