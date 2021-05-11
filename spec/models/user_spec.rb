@@ -45,8 +45,8 @@ RSpec.describe User, type: :model do
       end
 
       it 'passwordが数字のみでは登録できないこと' do
-        @user.password = '123456'
-        @user.password_confirmation = '123456'
+        @user.password = 123456
+        @user.password_confirmation = 123456
         @user.valid?
         expect(@user.errors.full_messages).to include ("Password is invalid")
       end
@@ -54,6 +54,13 @@ RSpec.describe User, type: :model do
       it 'passwordが英字のみでは登録できないこと' do
         @user.password = 'abcdef'
         @user.password_confirmation = 'abcdef'
+        @user.valid?
+        expect(@user.errors.full_messages).to include ("Password is invalid")
+      end
+
+      it 'passwordが全角では登録できないこと' do
+        @user.password = 'AB１２３４'
+        @user.password_confirmation = 'AB１２３４'
         @user.valid?
         expect(@user.errors.full_messages).to include ("Password is invalid")
       end
