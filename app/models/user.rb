@@ -3,16 +3,21 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
- validates :nickname,:last_name_kanji, :first_name_kanji, :last_name_kana, :first_name_kana, :birthday, presence: true
+  validates :nickname, :birthday, presence: true
 
  #has_many :items
  #has_many :purchase_records
 
- validates :last_name_kanji, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'must be full-width character' }
- validates :first_name_kanji, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'must be full-width character' }
- validates :last_name_kana, format: { with: /\A[ァ-ヶ一-]+\z/, message: 'must be full-width katakana' }
- validates :first_name_kana, format: { with: /\A[ァ-ヶ一-]+\z/, message: 'must be full-width katakana' }
- PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
- validates_format_of :password, with: PASSWORD_REGEX, message: 'must be alphanumeric character' 
+  with_options presence: true, format: {with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/} do
+    validates :last_name_kanji
+    validates :first_name_kanji
+  end
+
+  with_options presence: true, format: {with: /\A[ァ-ヶ一-]+\z/} do
+    validates :last_name_kana
+    validates :first_name_kana
+  end
+
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  validates_format_of :password, with: PASSWORD_REGEX
 end
