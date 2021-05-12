@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
   end
 
   def create
@@ -27,5 +28,4 @@ class ItemsController < ApplicationController
       redirect_to action: :index
     end
   end
-
 end
