@@ -10,7 +10,7 @@ class Item < ApplicationRecord
     validates :title
     validates :price
     validates :item_description
-    validates :user
+    validates :image
   end
 
   with_options presence: true do
@@ -27,5 +27,3 @@ class Item < ApplicationRecord
   has_one :purchase_record
   has_one_attached :image
 end
-
-#イメージはvalidatesかける？
