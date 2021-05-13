@@ -8,11 +8,14 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     validates :title
-    validates :price
     validates :item_description
     validates :image
   end
 
+  with_options presence: true, format: {with: /\A[0-9]+\d\z/, message: "is invalid"} do
+    validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is invalid"}
+  end
+  
   with_options presence: true do
     validates :category_id
     validates :status_id
