@@ -8,7 +8,6 @@ FactoryBot.define do
     shipping_fee_id {2}
     shipping_area_id {2}
     shipping_date_id {2}
-    user_id {2}
     
     association :user
 
