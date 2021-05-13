@@ -1,0 +1,35 @@
+ addTaxDom.innerHTML = Math.floor(inputValue / 10);
+    addProfitDom.innerHTML = Math.floor(inputValue - addTaxDom);         
+  });
+  parseInt(inputValue) - parseInt(addTaxDom.innerHTML)
+
+
+  $(function(){
+  $("#item_price").on('keyup', function(){
+    var price = $("#item_price").val();
+    if( 300 <= price && price <= 9999999) {
+    var fee = Math.floor(price / 10);
+    var profit = (price - fee);
+    $(".fee-span").text(fee);
+    $(".profit-span").text(profit);
+    }else{
+    $(".fee-span").text('');
+    $(".profit-span").text('');
+    }
+  })
+});
+
+def move_to_index
+    unless user_signed_in?
+      redirect_to action: :index
+    end
+  end
+
+window.addEventListener('load', () => {
+  console.log("OK");
+
+status_id {2}
+    shipping_fee_id {2}
+    shipping_area_id {2}
+    shipping_date_id {2}
+    user_id {2}
