@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @items = Item.all
+    @items = Item.new
   end
 
   def create
