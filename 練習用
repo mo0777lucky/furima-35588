@@ -70,3 +70,9 @@ status_id {2}
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
+
+def edit
+    if current_user.id != @items.user_id
+      redirect_to root_path
+    end
+  end
