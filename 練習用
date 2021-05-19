@@ -96,3 +96,21 @@ def edit
     end
   end
 end
+
+ it 'userが紐付いていないと保存できないこと' do
+          @purchase_record_shipping.user = nil
+          @purchase_record_shipping.valid?
+          expect(@purchase_record_shipping.errors.full_messages).to include('User must exist')
+        end
+        
+        it 'itemが紐付いていないと保存できないこと' do
+          @purchase_record_shipping.item = nil
+          @purchase_record_shipping.valid?
+          expect(@purchase_record_shipping.errors.full_messages).to include('Item must exist')
+        end
+
+        it 'shippingが紐付いていないと保存できないこと' do
+          @purchase_record_shipping.shipping = nil
+          @purchase_record_shipping.valid?
+          expect(@purchase_record_shipping.errors.full_messages).to include('Shipping must exist')
+        end
