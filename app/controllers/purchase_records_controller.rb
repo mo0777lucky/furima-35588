@@ -1,6 +1,5 @@
 class PurchaseRecordsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
-  before_action :move_to_index
+  before_action :authenticate_user!, only: [:index, :create]
 
   def index
     @purchase_record_shipping = PurchaseRecordShipping.new
@@ -34,11 +33,5 @@ class PurchaseRecordsController < ApplicationController
         card: purchase_record_shipping_params[:token], 
         currency: 'jpy'
       )
-    end
-    
-    def move_to_index
-      unless user_signed_in?
-        redirect_to user_session_path
-      end
     end
 end
