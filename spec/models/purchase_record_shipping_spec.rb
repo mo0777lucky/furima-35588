@@ -13,6 +13,11 @@ require 'rails_helper'
         it '全ての情報を正しく入力すれば、商品購入できる' do
           expect(@purchase_record_shipping).to be_valid
         end
+
+        it '建物名の記入がなくても登録できること' do
+          @purchase_record_shipping.building_name = ''
+          expect(@purchase_record_shipping).to be_valid
+        end
       end
 
       context '商品購入できないとき' do
@@ -58,18 +63,6 @@ require 'rails_helper'
           expect(@purchase_record_shipping.errors.full_messages).to include ("Address can't be blank")
         end
   
-        #it 'building_nameが空では購入できない' do
-          #@purchase_record_shipping.building_name = ''
-          #@purchase_record_shipping.valid?
-          #expect(@purchase_record_shipping.errors.full_messages).to include ("Building name can't be blank")
-        #end
-
-        #it 'building_nameの中の数字が全角では購入できない' do
-          #@purchase_record_shipping.building_name = '３０２'
-          #@purchase_record_shipping.valid?
-          #expect(@purchase_record_shipping.errors.full_messages).to include ("Building name is invalid")
-        #end
-  
         it 'phone_numberが空では購入できない' do
           @purchase_record_shipping.phone_number = ''
           @purchase_record_shipping.valid?
@@ -114,10 +107,3 @@ require 'rails_helper'
       end
     end
   end
-        #it 'purchase_recordが紐付いていないと保存できないこと' do
-          #@.purchase_record = nil
-          #@.valid?
-          #expect(@.errors.full_messages).to include('Purchase record must exist')
-        #end
-
-
