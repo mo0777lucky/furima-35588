@@ -6,6 +6,9 @@ class ItemsController < ApplicationController
   
   def index
     @items = Item.order("created_at DESC")
+    #if current_user.id == @items.user_id || @items.purchase_record != nil
+      #redirect_to root_path 
+    #end
   end
 
   def show
@@ -39,10 +42,12 @@ class ItemsController < ApplicationController
     end
   end
 
+
   def destroy
     @items.destroy
     redirect_to root_path
   end
+
 
   private
   def item_params
@@ -54,10 +59,10 @@ class ItemsController < ApplicationController
     @items = Item.find(params[:id])
   end
 
-
+  
   def set_message
-    if current_user.id != @items.user_id
-      redirect_to root_path
+    if current_user.id == @items.user_id || @items.purchase_record != nil
+    redirect_to root_path 
     end
   end
 end

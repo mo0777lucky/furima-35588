@@ -76,3 +76,41 @@ def edit
       redirect_to root_path
     end
   end
+
+テストコード
+ before do
+    @order = FactoryBot.build(:order)
+  end
+
+  context '内容に問題ない場合' do
+    it "priceがあれば保存ができること" do
+      expect(@order).to be_valid
+    end
+  end
+
+  context '内容に問題がある場合' do
+    it "priceが空では保存ができないこと" do
+      @order.price = nil
+      @order.valid?
+      expect(@order.errors.full_messages).to include("Price can't be blank")
+    end
+  end
+end
+
+ it 'userが紐付いていないと保存できないこと' do
+          @purchase_record_shipping.user = nil
+          @purchase_record_shipping.valid?
+          expect(@purchase_record_shipping.errors.full_messages).to include('User must exist')
+        end
+        
+        it 'itemが紐付いていないと保存できないこと' do
+          @purchase_record_shipping.item = nil
+          @purchase_record_shipping.valid?
+          expect(@purchase_record_shipping.errors.full_messages).to include('Item must exist')
+        end
+
+        it 'shippingが紐付いていないと保存できないこと' do
+          @purchase_record_shipping.shipping = nil
+          @purchase_record_shipping.valid?
+          expect(@purchase_record_shipping.errors.full_messages).to include('Shipping must exist')
+        end
