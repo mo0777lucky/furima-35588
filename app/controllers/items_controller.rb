@@ -61,7 +61,7 @@ class ItemsController < ApplicationController
 
   
   def set_message
-    if current_user.id == @items.user_id || @items.purchase_record != nil
+    if current_user.id != @items.user_id || @items.purchase_record != nil
     redirect_to root_path 
     end
   end
