@@ -1,116 +1,29 @@
- addTaxDom.innerHTML = Math.floor(inputValue / 10);
-    addProfitDom.innerHTML = Math.floor(inputValue - addTaxDom);         
-  });
-  parseInt(inputValue) - parseInt(addTaxDom.innerHTML)
+   #it 'addressの中の数字が全角数字では購入できないこと' do
+          #@purchase_record_shipping.address= '３-７'
+          #@purchase_record_shipping.valid?
+          #expect(@purchase_record_shipping.errors.full_messages).to include ("番地は不正な値です")
+        #end
 
-
-  $(function(){
-  $("#item_price").on('keyup', function(){
-    var price = $("#item_price").val();
-    if( 300 <= price && price <= 9999999) {
-    var fee = Math.floor(price / 10);
-    var profit = (price - fee);
-    $(".fee-span").text(fee);
-    $(".profit-span").text(profit);
-    }else{
-    $(".fee-span").text('');
-    $(".profit-span").text('');
-    }
-  })
-});
-
-def move_to_index
-    unless user_signed_in?
-      redirect_to action: :index
-    end
-  end
-
-window.addEventListener('load', () => {
-  console.log("OK");
-
-status_id {2}
-    shipping_fee_id {2}
-    shipping_area_id {2}
-    shipping_date_id {2}
-    user_id {2}
-
-
-
-    </div>
-        <div class='item-info'>
-          <h3 class='item-name'>
-            <%= "商品名" %>
-          </h3>
-          <div class='item-price'>
-            <span><%= "販売価格" %>円<br><%= '配送料負担' %></span>
-            <div class='star-btn'>
-              <%= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
-            </div>
-          </div>
-        </div>
-        <% end %>
-
-
-
-        <% @items.each do |item| %>
-      <% div class='item-info' style="background-image: url(<%= item.image %>);" %>
-        <%# ②「sold out」表示 %>
-          <%# if （ここに条件文） %>
-            <%# ここに「sold out」と表示する記述をする %>
-          <%# end %>
-        <h3 class='item-name'>
-        <p><% item.title %></p>
-        </h3>
-          <div class='item-price'>
-            <span><%= item.price %>円<br><%= 'item.shipping_fee' %></span>
-          </div>
-      </div>
-    <% end %>
-            <div class='star-btn'>
-              <%= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
-
-def edit
-    if current_user.id != @items.user_id
-      redirect_to root_path
-    end
-  end
-
-テストコード
- before do
-    @order = FactoryBot.build(:order)
-  end
-
-  context '内容に問題ない場合' do
-    it "priceがあれば保存ができること" do
-      expect(@order).to be_valid
-    end
-  end
-
-  context '内容に問題がある場合' do
-    it "priceが空では保存ができないこと" do
-      @order.price = nil
-      @order.valid?
-      expect(@order.errors.full_messages).to include("Price can't be blank")
-    end
-  end
-end
-
- it 'userが紐付いていないと保存できないこと' do
-          @purchase_record_shipping.user = nil
-          @purchase_record_shipping.valid?
-          expect(@purchase_record_shipping.errors.full_messages).to include('User must exist')
-        end
+        #it 'building_nameが空では購入できない' do
+          #@purchase_record_shipping.building_name = ''
+          #@purchase_record_shipping.valid?
+          #expect(@purchase_record_shipping.errors.full_messages).to include ("Building name can't be blank")
+        #end
         
-        it 'itemが紐付いていないと保存できないこと' do
-          @purchase_record_shipping.item = nil
-          @purchase_record_shipping.valid?
-          expect(@purchase_record_shipping.errors.full_messages).to include('Item must exist')
-        end
+        #it 'userが紐付いていないと保存できないこと' do
+          #@purchase_record_shipping.user = nil
+          #@purchase_record_shipping.valid?
+          #expect(@purchase_record_shipping.errors.full_messages).to include('User must exist')
+        #end
+        
+        #it 'itemが紐付いていないと保存できないこと' do
+          #@purchase_record_shipping.item = nil
+          #@purchase_record_shipping.valid?
+          #expect(@purchase_record_shipping.errors.full_messages).to include('Item must exist')
+        #end
 
-        it 'shippingが紐付いていないと保存できないこと' do
-          @purchase_record_shipping.shipping = nil
-          @purchase_record_shipping.valid?
-          expect(@purchase_record_shipping.errors.full_messages).to include('Shipping must exist')
-        end
+        #it 'shippingが紐付いていないと保存できないこと' do
+          #@purchase_record_shipping.shipping = nil
+          #@purchase_record_shipping.valid?
+          #expect(@purchase_record_shipping.errors.full_messages).to include('Shipping must exist')
+        #end

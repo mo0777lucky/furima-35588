@@ -7,8 +7,7 @@
       <%= @items.title %>
     </h2>
     <div class="item-img-content">
-      <%= image_tag @items.image ,class:"item-box-img" %>
-
+      <%= image_tag @items.image , class:"item-box-img" %>
       <% if @items.purchase_record != nil %>
       <div class="sold-out">
         <span>Sold Out!!</span>
@@ -77,7 +76,6 @@
       </div>
     </div>
   </div>
-  <%# /商品の概要 %>
 
   <div class="comment-box">
     <form>
@@ -101,6 +99,7 @@
       後ろの商品 ＞
     </a>
   </div>
+
   <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
   <a href="#" class="another-item"><%= "商品のカテゴリー名" %>をもっと見る</a>
   <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
